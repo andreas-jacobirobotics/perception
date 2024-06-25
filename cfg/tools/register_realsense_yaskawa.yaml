@@ -1,0 +1,23 @@
+# REGISTRATION PARAMS
+chessboard_registration:
+  corners_x: 7 # number of corners in the x direction
+  corners_y: 5 # number of corners in the y direction
+  flip_normal: 0
+  point_order: col_major
+
+  # VISUALIZATION PARAMS
+  vis: 0 # visualize registration
+  debug: 1 # show the final pose detection
+
+# SENSOR CALIBRATION LIST
+sensors:
+    realsense:
+        sensor_config:
+            type: realsense
+            cam_id: '213522253216'
+            filter_depth: 0
+            # frame: rgb
+        registration_config:
+            num_transform_avg: 10
+            num_images: 5
+            color_image_rescale_factor: 2.0

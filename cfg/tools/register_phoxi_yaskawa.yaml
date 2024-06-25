@@ -1,0 +1,22 @@
+# REGISTRATION PARAMS
+chessboard_registration:
+  corners_x: 7 # number of corners in the x direction
+  corners_y: 5 # number of corners in the y direction
+  flip_normal: 0
+  point_order: col_major
+
+  # VISUALIZATION PARAMS
+  vis: 0 # visualize registration
+  debug: 1 # show the final pose detection
+
+# SENSOR CALIBRATION LIST
+sensors:
+    phoxi:
+        sensor_config:
+            type: phoxi
+            device_name: 2018-07-013-LC3
+            size: small
+        registration_config:
+            num_transform_avg: 1
+            num_images: 1
+            color_image_rescale_factor: 1.0

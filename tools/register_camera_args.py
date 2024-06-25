@@ -49,15 +49,15 @@ if __name__ == "__main__":
         description="Register a camera to a robot"
     )
     parser.add_argument(
-        "--config_filename",
+        "--config",
         type=str,
         default="cfg/tools/register_camera.yaml",
-        help="filename of a YAML configuration for registration",
+        help="filepath of a YAML configuration for registration",
     )
     parser.add_argument('--image', required=False, default='')
-    parser.add_argument('--cb_world', nargs='3', required=False, type=float, help='position of chessboard in world frame')
+    parser.add_argument('--cb_world', nargs=3, required=False, default=[], type=float, help='position of chessboard in world frame (x, y, z)')
     args = parser.parse_args()
-    config_filename = args.config_filename
+    config_filename = args.config
     
     with open(config_filename, 'r') as fh:
         config = yaml.safe_load(fh)
