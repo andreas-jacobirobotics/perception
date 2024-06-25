@@ -14,21 +14,11 @@ import cv2
 import numpy as np
 from autolab_core import (
     CameraChessboardRegistration,
-    Point,
-    PointCloud,
     RigidTransform,
-    YamlConfig,
-    keyboard_input,
 )
-from visualization import Visualizer3D as vis3d
-# from yumipy import YuMiConstants as YMC
-# from yumipy import YuMiRobot
 
 from perception import RgbdSensorFactory
 
-from jacobi import Planner
-from jacobi.robots import YaskawaHC10
-from jacobi.drivers import Result, YaskawaDriver
 
 global clicked_pt
 # clicked_pt = None
