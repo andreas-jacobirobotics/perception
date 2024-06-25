@@ -22,6 +22,10 @@ add_library (phoxi-sensor
     src/phoxi_sensor.cpp
 )
 
+add_executable(grab-frame 
+    src/grab_frame.cpp
+)
+
 if (NOT PHO_API_CMAKE_CONFIG_PATH)
     set(PHO_API_CMAKE_CONFIG_PATH "$ENV{PHOXI_CONTROL_PATH}")
 endif()
@@ -32,6 +36,9 @@ target_link_libraries(phoxi-sensor
     ${PHOXI_LIBRARY}
     $<$<PLATFORM_ID:Linux>:rt>
 )
+
+target_link_libraries(grab-frame PRIVATE phoxi-sensor)
+target_include_directories(grab-frame PUBLIC include ${PHOXI_INCLUDE_DIRS})
 
 get_target_property(ReleaseBinFolder phoxi-sensor RUNTIME_OUTPUT_DIRECTORY_RELEASE)
 get_target_property(DebugBinFolder phoxi-sensor RUNTIME_OUTPUT_DIRECTORY_DEBUG)

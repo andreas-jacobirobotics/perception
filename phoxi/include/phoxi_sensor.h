@@ -3,6 +3,7 @@
 #include "PhoXi.h"
 
 class PhoxiSensor {
+public:
     std::string frame;
     std::string device_name;
     std::string size;
@@ -11,7 +12,7 @@ class PhoxiSensor {
     PhoxiSensor(const std::string& frame, const std::string& device_name, const std::string& size);
 
     // Start the sensor.
-    void start();
+    bool start();
 
     // Stop the sensor.
     void stop();
@@ -21,4 +22,15 @@ class PhoxiSensor {
 
     // Retrieve a frame from the sensor.
     void frames();
+
+private:
+    pho::api::PPhoXi PhoXiDevice;
+
+    void printDeviceInfoList(const std::vector<pho::api::PhoXiDeviceInformation> &DeviceList);
+
+    void printDeviceInfo(const pho::api::PhoXiDeviceInformation &DeviceInfo);
+
+    void printFrameData(const pho::api::PFrame &Frame);
+
+    void printFrameInfo(const pho::api::PFrame &Frame);
 };
