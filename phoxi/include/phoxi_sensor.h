@@ -27,6 +27,15 @@ public:
     // Get the depth map.
     std::vector<std::vector<float>> get_depth_map();
 
+    // Get the texture.
+    std::vector<std::vector<float>> get_texture();
+
+    // // Get the point cloud.
+    // std::vector<std::vector<float>> get_point_cloud();
+
+    // // Get the normal map.
+    // std::vector<std::vector<float>> get_normal_map();
+
     // std::vector<float> get_depth_map_1d();
 
 private:

@@ -46,14 +46,27 @@ class PhoXiSensor(PhoxiSensor):
         super().frames()
         depth_map = np.array(self.get_depth_map())
         depth_image = DepthImage(depth_map)
-        color_map = (depth_map / depth_map.max() * 255).astype(np.uint8)
-        color_map = np.dstack((color_map,)*3)
-        color_image = ColorImage(color_map)
+        # color_map = (depth_map / depth_map.max() * 255).astype(np.uint8)
+        # color_map = np.dstack((color_map,)*3)
+        # color_image = ColorImage(color_map)
+
+        texture = np.array(self.get_texture())
+        texture = (texture / texture.max() * 255).astype(np.uint8)
+        texture = np.dstack((texture,)*3)
+        color_image = ColorImage(texture)
+
+        # cloud = np.array(self.get_point_cloud())
+        # plt.imshow(cloud)
+        # plt.show()
+
+        # normal_map = np.array(self.get_normal_map())
+        # plt.imshow(normal_map)
+        # plt.show()
 
         plt.imshow(color_image.data)
         plt.show()
 
-        # plt.imshow(depth_image.data)
-        # plt.show()
+        plt.imshow(depth_image.data)
+        plt.show()
 
         return color_image, depth_image

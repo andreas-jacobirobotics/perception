@@ -62,6 +62,10 @@ bool PhoxiSensor::connect() {
         return 0;
     }
 
+    PhoXiDevice->CapturingSettings->AmbientLightSuppression = true;
+    std::cout << "PhoXiDevice->CapturingSettings->SinglePatternExposure " << PhoXiDevice->CapturingSettings->SinglePatternExposure << std::endl;
+    // PhoXiDevice->CapturingSettings->SinglePatternExposure = PhoXiDevice->SupportedSinglePatternExposures[6];
+
     return false;
 }
 
@@ -136,6 +140,63 @@ std::vector<std::vector<float>> PhoxiSensor::get_depth_map() {
 
     return depth_map;
 }
+
+std::vector<std::vector<float>> PhoxiSensor::get_texture() {
+    const int width = Frame->Texture.Size.Width;
+    const int height = Frame->Texture.Size.Height;
+    std::vector<std::vector<float>> texture;
+    texture.resize(height);
+    for (size_t i = 0; i < height; i++)
+    {   
+        texture[i].resize(width);
+
+        for (size_t j = 0; j < width; j++)
+        {
+            texture[i][j] = Frame->Texture.At(i,j);
+        }
+        
+    }
+
+    return texture;
+}
+
+// std::vector<std::vector<float>> PhoxiSensor::get_point_cloud() {
+//     const int width = Frame->PointCloud.Size.Width;
+//     const int height = Frame->PointCloud.Size.Height;
+//     std::vector<std::vector<float>> cloud;
+//     cloud.resize(height);
+//     for (size_t i = 0; i < height; i++)
+//     {   
+//         cloud[i].resize(width);
+
+//         for (size_t j = 0; j < width; j++)
+//         {
+//             cloud[i][j] = Frame->PointCloud.At(i,j);
+//         }
+        
+//     }
+
+//     return cloud;
+// }
+
+// std::vector<std::vector<float>> PhoxiSensor::get_normal_map() {
+//     const int width = Frame->NormalMap.Size.Width;
+//     const int height = Frame->NormalMap.Size.Height;
+//     std::vector<std::vector<float>> normal_map;
+//     normal_map.resize(height);
+//     for (size_t i = 0; i < height; i++)
+//     {   
+//         normal_map[i].resize(width);
+
+//         for (size_t j = 0; j < width; j++)
+//         {
+//             normal_map[i][j] = Frame->NormalMap.At(i,j);
+//         }
+        
+//     }
+
+//     return normal_map;
+// }
 
 // std::vector<float> PhoxiSensor::get_depth_map_1d() {
 //     const int width = Frame->DepthMap.Size.Width;
