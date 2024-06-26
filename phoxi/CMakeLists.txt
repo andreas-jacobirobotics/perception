@@ -3,6 +3,10 @@
 # to the root binary directory of the project as ${ConnectAndGrabExample_BINARY_DIR}.
 cmake_minimum_required (VERSION 3.10)
 
+set( CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall --std=c++11 -O3 -fPIC" )
+
+include(FetchContent)
+
 if(POLICY CMP0054)
     cmake_policy(SET CMP0054 NEW)
 endif()
@@ -52,3 +56,17 @@ set_target_properties(phoxi-sensor
     DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
     RELEASE_POSTFIX ${CMAKE_RELEASE_POSTFIX}
 )
+
+FetchContent_Declare(pybind11 GIT_REPOSITORY https://github.com/pybind/pybind11.git GIT_TAG v2.12.0)
+FetchContent_MakeAvailable(pybind11)
+
+pybind11_add_module(python_phoxi_sensor
+    src/python_phoxi_sensor.cpp
+)
+target_include_directories(python_phoxi_sensor PUBLIC include ${PHOXI_INCLUDE_DIRS})
+target_link_libraries(python_phoxi_sensor PRIVATE phoxi-sensor)
+set_target_properties(python_phoxi_sensor PROPERTIES OUTPUT_NAME phoxi)
+set_target_properties(python_phoxi_sensor PROPERTIES ARCHIVE_OUTPUT_NAME python_phoxi)
+
+install(TARGETS phoxi-sensor LIBRARY DESTINATION .)
+install(TARGETS python_phoxi_sensor LIBRARY DESTINATION .)

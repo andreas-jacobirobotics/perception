@@ -27,8 +27,13 @@ public:
     // Get the depth map.
     std::vector<float> get_depth_map();
 
+    const int depth_map_height();
+    const int depth_map_width();
+
 private:
     pho::api::PPhoXi PhoXiDevice;
+    int depth_map_height_;
+    int depth_map_width_;
 
     void printDeviceInfoList(const std::vector<pho::api::PhoXiDeviceInformation> &DeviceList);
 

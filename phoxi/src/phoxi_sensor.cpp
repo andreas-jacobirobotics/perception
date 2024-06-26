@@ -132,6 +132,9 @@ std::vector<float> PhoxiSensor::get_depth_map() {
         
     }
 
+    depth_map_height_ = height;
+    depth_map_width_= width;
+
     return depth_map;
 }
 
@@ -254,4 +257,12 @@ void PhoxiSensor::printFrameData(const pho::api::PFrame &Frame)
             << Frame->ColorCameraImage.GetElementName()
             << std::endl;
     }
+}
+
+const int PhoxiSensor::depth_map_height() {
+    return depth_map_height_;
+}
+
+const int PhoxiSensor::depth_map_width() {
+    return depth_map_width_;
 }
