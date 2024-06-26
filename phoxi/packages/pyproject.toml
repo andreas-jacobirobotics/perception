@@ -1,6 +1,6 @@
 [project]
 name = "phoxi"
-version = "0.0.1"
+version = "0.0.2"
 description = "Phoxi Camera Driver"
 authors = [
     {name="Andreas ten Pas", email="andreas.tenpas@jacobirobotics.com"},
@@ -12,7 +12,7 @@ requires = ["scikit-build-core", "pybind11"]
 build-backend = "scikit_build_core.build"
 
 [tool.scikit-build.cmake]
-source-dir = ".."
+source-dir = "../"
 
 [tool.scikit-build.cmake.define]
 BUILD_SHARED_LIBS = "ON"

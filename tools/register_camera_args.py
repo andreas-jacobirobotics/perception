@@ -1,6 +1,5 @@
 """
-Script to register sensors to a chessboard for the YuMi setup
-Authors: Jeff Mahler and Brenton Chu
+Script to register sensors to a chessboard
 """
 import argparse
 import logging
@@ -18,6 +17,11 @@ from autolab_core import (
 )
 
 from perception import RgbdSensorFactory
+
+# import sys
+# sys.path.append('/home/andreas/Software/perception/phoxi/build/')
+
+# from phoxi import PhoxiSensor
 
 
 global clicked_pt
@@ -81,7 +85,7 @@ if __name__ == "__main__":
 
             # register camera using chessboard
             reg_result = CameraChessboardRegistration.register(
-                sensor, registration_config, args.image
+                sensor, registration_config
             )
             T_camera_world = T_cb_world * reg_result.T_camera_cb
 

@@ -37,12 +37,19 @@ try:
 except BaseException as E:
     EnsensoSensor = exceptions.closure(E)
 
-try:
-    from .colorized_phoxi_sensor import ColorizedPhoXiSensor
-    from .phoxi_ros_sensor import PhoXiSensor
-except BaseException as E:
-    PhoXiSensor = exceptions.closure(E)
-    ColorizedPhoXiSensor = exceptions.closure(E)
+# try:
+    # from .colorized_phoxi_sensor import ColorizedPhoXiSensor
+    # from .phoxi_ros_sensor import PhoXiSensor
+# except BaseException as E:
+#     PhoXiSensor = exceptions.closure(E)
+#     ColorizedPhoXiSensor = exceptions.closure(E)
+
+# import sys
+# sys.path.append('/home/andreas/Software/perception/phoxi/build/')
+
+# from phoxi import PhoxiSensor
+
+from .phoxi_sensor import PhoXiSensor
 
 
 class RgbdSensorFactory:

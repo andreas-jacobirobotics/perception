@@ -42,7 +42,7 @@ target_link_libraries(phoxi-sensor
     $<$<PLATFORM_ID:Linux>:rt>
 )
 
-target_link_libraries(grab-frame PRIVATE phoxi-sensor)
+target_link_libraries(grab-frame PUBLIC phoxi-sensor)
 target_include_directories(grab-frame PUBLIC include ${PHOXI_INCLUDE_DIRS})
 
 get_target_property(ReleaseBinFolder phoxi-sensor RUNTIME_OUTPUT_DIRECTORY_RELEASE)
@@ -56,6 +56,7 @@ set_target_properties(phoxi-sensor
     DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
     RELEASE_POSTFIX ${CMAKE_RELEASE_POSTFIX}
 )
+set_target_properties(phoxi-sensor PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 FetchContent_Declare(pybind11 GIT_REPOSITORY https://github.com/pybind/pybind11.git GIT_TAG v2.12.0)
 FetchContent_MakeAvailable(pybind11)
