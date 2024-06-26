@@ -6,7 +6,7 @@ int main()
     sensor.start();
     sensor.frames();
 
-    std::vector<float> depth_map = sensor.get_depth_map(); 
+    std::vector<std::vector<float>> depth_map = sensor.get_depth_map(); 
 
     sensor.stop();
 

@@ -118,25 +118,41 @@ void PhoxiSensor::frames() {
     PhoXiDevice->StopAcquisition();
 }
 
-std::vector<float> PhoxiSensor::get_depth_map() {
+std::vector<std::vector<float>> PhoxiSensor::get_depth_map() {
     const int width = Frame->DepthMap.Size.Width;
     const int height = Frame->DepthMap.Size.Height;
-    std::vector<float> depth_map;
-    depth_map.resize(width * height);
+    std::vector<std::vector<float>> depth_map;
+    depth_map.resize(height);
     for (size_t i = 0; i < height; i++)
-    {
+    {   
+        depth_map[i].resize(width);
+
         for (size_t j = 0; j < width; j++)
         {
-            depth_map[i*width + j] = Frame->DepthMap.At(i,j);
+            depth_map[i][j] = Frame->DepthMap.At(i,j);
         }
         
     }
 
-    depth_map_height_ = height;
-    depth_map_width_= width;
-
     return depth_map;
 }
+
+// std::vector<float> PhoxiSensor::get_depth_map_1d() {
+//     const int width = Frame->DepthMap.Size.Width;
+//     const int height = Frame->DepthMap.Size.Height;
+//     std::vector<float> depth_map;
+//     depth_map.resize(width * height);
+//     for (size_t i = 0; i < height; i++)
+//     {
+//         for (size_t j = 0; j < width; j++)
+//         {
+//             depth_map[i*width + j] = Frame->DepthMap.At(i,j);
+//         }
+        
+//     }
+
+//     return depth_map;
+// }
 
 void PhoxiSensor::printDeviceInfoList(const std::vector<pho::api::PhoXiDeviceInformation> &DeviceList)
 {
@@ -257,12 +273,4 @@ void PhoxiSensor::printFrameData(const pho::api::PFrame &Frame)
             << Frame->ColorCameraImage.GetElementName()
             << std::endl;
     }
-}
-
-const int PhoxiSensor::depth_map_height() {
-    return depth_map_height_;
-}
-
-const int PhoxiSensor::depth_map_width() {
-    return depth_map_width_;
 }

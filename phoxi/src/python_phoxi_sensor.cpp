@@ -15,7 +15,5 @@ PYBIND11_MODULE(phoxi, m) {
         .def("start", &PhoxiSensor::start)
         .def("stop", &PhoxiSensor::stop)
         .def("frames", &PhoxiSensor::frames)
-        .def("get_depth_map", &PhoxiSensor::get_depth_map)
-        .def("depth_map_height", &PhoxiSensor::depth_map_height)
-        .def("depth_map_width", &PhoxiSensor::depth_map_width);
+        .def("get_depth_map", &PhoxiSensor::get_depth_map);
 }
