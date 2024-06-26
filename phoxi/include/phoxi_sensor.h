@@ -8,6 +8,7 @@ public:
     std::string device_name;
     std::string size;
     bool running;
+    pho::api::PFrame Frame;
 
     PhoxiSensor(const std::string& frame, const std::string& device_name, const std::string& size);
 
@@ -22,6 +23,9 @@ public:
 
     // Retrieve a frame from the sensor.
     void frames();
+
+    // Get the depth map.
+    std::vector<float> get_depth_map();
 
 private:
     pho::api::PPhoXi PhoXiDevice;

@@ -12,6 +12,7 @@ project (phoxi-sensor)
 set(CMAKE_RELEASE_POSTFIX "_Release")
 set(CMAKE_DEBUG_POSTFIX "_Debug")
 
+set(CMAKE_CXX_STANDARD 11)
 
 if (UNIX AND NOT APPLE)
     add_compile_options(-std=c++1y)

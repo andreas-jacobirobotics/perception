@@ -36,7 +36,7 @@ bool PhoxiSensor::connect() {
     printDeviceInfoList(DeviceList);
 
     //Try to connect device opened in PhoXi Control, if any
-    pho::api::PPhoXi PhoXiDevice = Factory.CreateAndConnectFirstAttached();
+    PhoXiDevice = Factory.CreateAndConnectFirstAttached();
     if (PhoXiDevice)
     {
         std::cout << "You have already PhoXi device opened in PhoXi Control, the API Example is connected to device: "
@@ -66,7 +66,12 @@ bool PhoxiSensor::connect() {
 }
 
 void PhoxiSensor::stop() {
-   PhoXiDevice->StopAcquisition(); 
+    if (PhoXiDevice->isAcquiring())
+    {
+        PhoXiDevice->StopAcquisition();
+    }
+   
+   PhoXiDevice->Disconnect(true, false);
 }
 
 void PhoxiSensor::frames() {
@@ -99,7 +104,7 @@ void PhoxiSensor::frames() {
     }
     
     std::cout << "Waiting for frame " << std::endl;
-    pho::api::PFrame Frame = PhoXiDevice->GetSpecificFrame(FrameID, pho::api::PhoXiTimeout::Infinity);
+    Frame = PhoXiDevice->GetSpecificFrame(FrameID, pho::api::PhoXiTimeout::Infinity);
     
     if (Frame)
     {
@@ -111,6 +116,23 @@ void PhoxiSensor::frames() {
         std::cout << "Failed to retrieve the frame!" << std::endl;
     }
     PhoXiDevice->StopAcquisition();
+}
+
+std::vector<float> PhoxiSensor::get_depth_map() {
+    const int width = Frame->DepthMap.Size.Width;
+    const int height = Frame->DepthMap.Size.Height;
+    std::vector<float> depth_map;
+    depth_map.resize(width * height);
+    for (size_t i = 0; i < height; i++)
+    {
+        for (size_t j = 0; j < width; j++)
+        {
+            depth_map[i*width + j] = Frame->DepthMap.At(i,j);
+        }
+        
+    }
+
+    return depth_map;
 }
 
 void PhoxiSensor::printDeviceInfoList(const std::vector<pho::api::PhoXiDeviceInformation> &DeviceList)
