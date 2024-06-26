@@ -8,6 +8,7 @@ chessboard_registration:
   # VISUALIZATION PARAMS
   vis: 0 # visualize registration
   debug: 1 # show the final pose detection
+  scale_amt: 0.1 # scale for vis axes
 
 # SENSOR CALIBRATION LIST
 sensors:
