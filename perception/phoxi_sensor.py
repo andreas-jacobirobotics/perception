@@ -15,6 +15,8 @@ class PhoXiSensor(PhoxiSensor):
     def __init__(self, frame: str, device_name: str, size: str):
         super().__init__(frame, device_name, size)
 
+        self.scaling_factor = 1000.0
+
         # Set up camera intrinsics for the sensor
         width, height = 2064, 1544
         focal_x = self.fx
@@ -65,7 +67,7 @@ class PhoXiSensor(PhoxiSensor):
         self.ir_intrinsics = self._camera_intr
 
         depth_map = np.array(self.get_depth_map())
-        depth_image = DepthImage(depth_map)
+        depth_image = DepthImage(depth_map / self.scaling_factor)
         # color_map = (depth_map / depth_map.max() * 255).astype(np.uint8)
         # color_map = np.dstack((color_map,)*3)
         # color_image = ColorImage(color_map)
