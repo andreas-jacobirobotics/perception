@@ -23,18 +23,6 @@ class PhoXiSensor(PhoxiSensor):
         focal_y = self.fy
         center_x = self.cx
         center_y = self.cy
-        # focal_x, focal_y = 2244.0, 2244.0
-        # center_x, center_y = 1023.0, 768.0
-        # if size == "small":
-        #     width = 1032
-        #     height = 772
-        #     focal_x = focal_x / 2
-        #     focal_y = focal_y / 2
-        #     center_x = center_x / 2
-        #     center_y = center_y / 2
-
-        #     if str(device_name) == "1703005":
-        #         focal_x = focal_y = 1105.0
 
         self._camera_intr = CameraIntrinsics(
             self.frame,
@@ -68,25 +56,11 @@ class PhoXiSensor(PhoxiSensor):
 
         depth_map = np.array(self.get_depth_map())
         depth_image = DepthImage(depth_map / self.scaling_factor)
-        # color_map = (depth_map / depth_map.max() * 255).astype(np.uint8)
-        # color_map = np.dstack((color_map,)*3)
-        # color_image = ColorImage(color_map)
 
         texture = np.array(self.get_texture())
         texture = (texture / texture.max() * 255).astype(np.uint8)
         texture = np.dstack((texture,)*3)
         color_image = ColorImage(texture)
-
-        # cloud = np.array(self.get_point_cloud())
-        # plt.imshow(cloud)
-        # plt.show()
-
-        # normal_map = np.array(self.get_normal_map())
-        # plt.imshow(normal_map)
-        # plt.show()
-
-        # plt.imshow(color_image.data)
-        # plt.show()
 
         plt.imshow(depth_image.data)
         plt.show()

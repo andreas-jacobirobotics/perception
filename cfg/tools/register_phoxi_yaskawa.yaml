@@ -16,7 +16,7 @@ sensors:
         sensor_config:
             type: phoxi
             device_name: DKV-164
-            size: small
+            size: small # deprecated
         registration_config:
             num_transform_avg: 1
             num_images: 1
