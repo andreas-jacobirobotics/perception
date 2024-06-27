@@ -59,6 +59,7 @@ if __name__ == "__main__":
     # get known tf from chessboard to world
     if len(args.cb_world) > 0:
         T_cb_world = RigidTransform(rotation=np.eye(3), translation=np.array(args.cb_world), from_frame='cb', to_frame='world')
+        print(f'T_cb_world: {T_cb_world}')
     else:
         T_cb_world = RigidTransform(rotation=np.eye(3), translation=np.array([0.279, 0.779, 1.13]), from_frame='cb', to_frame='world')
         

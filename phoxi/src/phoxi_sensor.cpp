@@ -112,6 +112,13 @@ void PhoxiSensor::frames() {
     
     if (Frame)
     {
+        const auto& cameraMatrix = Frame->Info.CameraMatrix;
+        // std::vector<float> x;
+        // x.push_back()
+        fx = (float) cameraMatrix[0][0];
+        fy = (float) cameraMatrix[1][1];
+        cx = (float) cameraMatrix[0][2];
+        cy = (float) cameraMatrix[1][2];
         printFrameInfo(Frame);
         printFrameData(Frame);
     }

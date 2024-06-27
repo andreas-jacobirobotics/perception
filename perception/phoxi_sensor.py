@@ -63,10 +63,10 @@ class PhoXiSensor(PhoxiSensor):
         # plt.imshow(normal_map)
         # plt.show()
 
-        plt.imshow(color_image.data)
-        plt.show()
+        # plt.imshow(color_image.data)
+        # plt.show()
 
-        plt.imshow(depth_image.data)
-        plt.show()
+        # plt.imshow(depth_image.data)
+        # plt.show()
 
         return color_image, depth_image

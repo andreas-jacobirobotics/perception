@@ -9,6 +9,10 @@ public:
     std::string size;
     bool running;
     pho::api::PFrame Frame;
+    float fx;
+    float fy;
+    float cx;
+    float cy;
 
     PhoxiSensor(const std::string& frame, const std::string& device_name, const std::string& size);
 
