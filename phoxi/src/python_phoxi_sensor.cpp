@@ -19,6 +19,10 @@ PYBIND11_MODULE(phoxi, m) {
         .def("get_texture", &PhoxiSensor::get_texture)
         // .def("get_point_cloud", &PhoxiSensor::get_point_cloud)
         // .def("get_normal_map", &PhoxiSensor::get_normal_map)
+        .def_readonly("fx", &PhoxiSensor::fx)
+        .def_readonly("fy", &PhoxiSensor::fy)
+        .def_readonly("cx", &PhoxiSensor::cx)
+        .def_readonly("cy", &PhoxiSensor::cy)
         .def_readonly("frame", &PhoxiSensor::frame)
         .def_readonly("ir_frame", &PhoxiSensor::frame);
 }

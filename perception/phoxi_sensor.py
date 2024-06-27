@@ -17,18 +17,22 @@ class PhoXiSensor(PhoxiSensor):
 
         # Set up camera intrinsics for the sensor
         width, height = 2064, 1544
-        focal_x, focal_y = 2244.0, 2244.0
-        center_x, center_y = 1023.0, 768.0
-        if size == "small":
-            width = 1032
-            height = 772
-            focal_x = focal_x / 2
-            focal_y = focal_y / 2
-            center_x = center_x / 2
-            center_y = center_y / 2
+        focal_x = self.fx
+        focal_y = self.fy
+        center_x = self.cx
+        center_y = self.cy
+        # focal_x, focal_y = 2244.0, 2244.0
+        # center_x, center_y = 1023.0, 768.0
+        # if size == "small":
+        #     width = 1032
+        #     height = 772
+        #     focal_x = focal_x / 2
+        #     focal_y = focal_y / 2
+        #     center_x = center_x / 2
+        #     center_y = center_y / 2
 
-            if str(device_name) == "1703005":
-                focal_x = focal_y = 1105.0
+        #     if str(device_name) == "1703005":
+        #         focal_x = focal_y = 1105.0
 
         self._camera_intr = CameraIntrinsics(
             self.frame,
