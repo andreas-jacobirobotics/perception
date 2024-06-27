@@ -44,8 +44,9 @@ bool PhoxiSensor::connect() {
     }
     else
     {
-        std::cout << "You have no PhoXi device opened in PhoXi Control, the API Example will try to connect to last device in device list" << std::endl;
-        PhoXiDevice = Factory.CreateAndConnect(DeviceList.back().HWIdentification);
+        std::cout << "You have no PhoXi device opened in PhoXi Control, the API Example will try to connect to " << device_name << std::endl;
+        // PhoXiDevice = Factory.CreateAndConnect(DeviceList.back().HWIdentification);
+        PhoXiDevice = Factory.CreateAndConnect(device_name);
     }
 
     //Check if device was created

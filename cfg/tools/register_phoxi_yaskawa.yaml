@@ -15,7 +15,7 @@ sensors:
     phoxi:
         sensor_config:
             type: phoxi
-            device_name: 2018-07-013-LC3
+            device_name: DKV-164
             size: small
         registration_config:
             num_transform_avg: 1
