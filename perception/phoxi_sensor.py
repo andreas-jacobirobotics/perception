@@ -48,6 +48,22 @@ class PhoXiSensor(PhoxiSensor):
 
     def frames(self):
         super().frames()
+
+        focal_x = self.fx
+        focal_y = self.fy
+        center_x = self.cx
+        center_y = self.cy
+        self._camera_intr = CameraIntrinsics(
+            self.frame,
+            focal_x,
+            focal_y,
+            center_x,
+            center_y,
+            height=self._camera_intr.height,
+            width=self._camera_intr.width,
+        )
+        self.ir_intrinsics = self._camera_intr
+
         depth_map = np.array(self.get_depth_map())
         depth_image = DepthImage(depth_map)
         # color_map = (depth_map / depth_map.max() * 255).astype(np.uint8)
@@ -70,7 +86,7 @@ class PhoXiSensor(PhoxiSensor):
         # plt.imshow(color_image.data)
         # plt.show()
 
-        # plt.imshow(depth_image.data)
-        # plt.show()
+        plt.imshow(depth_image.data)
+        plt.show()
 
         return color_image, depth_image
