@@ -2,7 +2,7 @@
 chessboard_registration:
   corners_x: 7 # number of corners in the x direction
   corners_y: 5 # number of corners in the y direction
-  flip_normal: 0
+  flip_normal: 0 # direction of plane normal (e.g., toward or away from camera)
   point_order: col_major
 
   # VISUALIZATION PARAMS
