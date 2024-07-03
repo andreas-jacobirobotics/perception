@@ -49,7 +49,7 @@ except BaseException as E:
 
 # from phoxi import PhoxiSensor
 
-from .phoxi_sensor import PhoXiSensor
+# from .phoxi_sensor import PhoXiSensor
 
 
 class RgbdSensorFactory:
@@ -95,20 +95,22 @@ class RgbdSensorFactory:
         elif sensor_type == "ensenso":
             s = EnsensoSensor(frame=cfg["frame"])
         elif sensor_type == "phoxi":
-            s = PhoXiSensor(
-                frame=cfg["frame"],
-                device_name=cfg["device_name"],
-                size=cfg["size"],
-            )
+            pass
+            # s = PhoXiSensor(
+            #     frame=cfg["frame"],
+            #     device_name=cfg["device_name"],
+            #     size=cfg["size"],
+            # )
         elif sensor_type == "webcam":
             s = WebcamSensor(frame=cfg["frame"], device_id=cfg["device_id"])
         elif sensor_type == "colorized_phoxi":
-            s = ColorizedPhoXiSensor(
-                frame=cfg["frame"],
-                phoxi_config=cfg["phoxi_config"],
-                webcam_config=cfg["webcam_config"],
-                calib_dir=cfg["calib_dir"],
-            )
+            pass
+            # s = ColorizedPhoXiSensor(
+            #     frame=cfg["frame"],
+            #     phoxi_config=cfg["phoxi_config"],
+            #     webcam_config=cfg["webcam_config"],
+            #     calib_dir=cfg["calib_dir"],
+            # )
         elif sensor_type == "realsense":
             s = RealSenseSensor(
                 cam_id=cfg["cam_id"],
