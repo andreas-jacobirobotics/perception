@@ -61,6 +61,8 @@ if __name__ == "__main__":
             print("Starting sensor")
             sensor.start()
             print("Sensor initialized")
+            print("Intrinsics")
+            print(sensor._intrinsics)
 
             if sensor_type == 'realsense':
                 sensor.ir_intrinsics = sensor.color_intrinsics

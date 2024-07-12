@@ -1,9 +1,9 @@
 # REGISTRATION PARAMS
 chessboard_registration:
   corners_x: 7 # number of corners in the x direction
-  corners_y: 5 # number of corners in the y direction
+  corners_y: 6 # number of corners in the y direction
   flip_normal: 0
-  point_order: col_major
+  point_order: row_major
 
   # VISUALIZATION PARAMS
   vis: 0 # visualize registration
