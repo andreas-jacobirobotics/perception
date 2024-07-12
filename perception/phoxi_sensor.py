@@ -5,6 +5,7 @@ import sys
 sys.path.append('/home/andreas/Software/perception/phoxi/build/')
 
 from phoxi import PhoxiSensor
+# from jacobi_vision.camera_drivers.phoxi_camera_driver import PhoXiCameraDriver
 
 from autolab_core import CameraIntrinsics, ColorImage, DepthImage
 
@@ -62,7 +63,11 @@ class PhoXiSensor(PhoxiSensor):
         texture = np.dstack((texture,)*3)
         color_image = ColorImage(texture)
 
+        plt.imshow(color_image.data)
+        plt.title('texture')
+        plt.show()
         plt.imshow(depth_image.data)
+        plt.title('depth')
         plt.show()
 
         return color_image, depth_image

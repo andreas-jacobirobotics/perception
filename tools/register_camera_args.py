@@ -18,24 +18,6 @@ from autolab_core import (
 
 from perception import RgbdSensorFactory
 
-# import sys
-# sys.path.append('/home/andreas/Software/perception/phoxi/build/')
-
-# from phoxi import PhoxiSensor
-
-
-global clicked_pt
-# clicked_pt = None
-pt_radius = 2
-pt_color = (255, 0, 0)
-
-
-def click_gripper(event, x, y, flags, param):
-    global clicked_pt
-    if event == cv2.EVENT_LBUTTONDBLCLK:
-        clicked_pt = np.array([x, y])
-        print("Clicked: {}".format(clicked_pt))
-
 
 if __name__ == "__main__":
     # parse args

@@ -20,4 +20,4 @@ sensors:
         registration_config:
             num_transform_avg: 1
             num_images: 1
-            color_image_rescale_factor: 1.0
+            color_image_rescale_factor: 2.0
