@@ -44,12 +44,12 @@ except BaseException as E:
 #     PhoXiSensor = exceptions.closure(E)
 #     ColorizedPhoXiSensor = exceptions.closure(E)
 
-# import sys
-# sys.path.append('/home/andreas/Software/perception/phoxi/build/')
+import sys
+sys.path.append('/home/andreas/Software/perception/phoxi/build/')
 
-# from phoxi import PhoxiSensor
+from phoxi import PhoxiSensor
 
-# from .phoxi_sensor import PhoXiSensor
+from .phoxi_sensor import PhoXiSensor
 
 
 class RgbdSensorFactory:
@@ -95,12 +95,11 @@ class RgbdSensorFactory:
         elif sensor_type == "ensenso":
             s = EnsensoSensor(frame=cfg["frame"])
         elif sensor_type == "phoxi":
-            pass
-            # s = PhoXiSensor(
-            #     frame=cfg["frame"],
-            #     device_name=cfg["device_name"],
-            #     size=cfg["size"],
-            # )
+            s = PhoXiSensor(
+                frame=cfg["frame"],
+                device_name=cfg["device_name"],
+                size=cfg["size"],
+            )
         elif sensor_type == "webcam":
             s = WebcamSensor(frame=cfg["frame"], device_id=cfg["device_id"])
         elif sensor_type == "colorized_phoxi":
