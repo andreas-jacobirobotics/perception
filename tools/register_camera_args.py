@@ -77,10 +77,8 @@ if __name__ == "__main__":
             print("Final Result for sensor %s" % (sensor_frame))
             print("Rotation: ")
             print(T_camera_world.rotation)
-            print("Quaternion (wxyz): ")
-            print(T_camera_world.quaternion)
-            print("Translation: ")
-            print(T_camera_world.translation)
+            print("Quaternion (wxyz):", T_camera_world.quaternion)
+            print("Translation:", T_camera_world.translation)
 
         except Exception:
             logging.error("Failed to register sensor {}".format(sensor_frame))
