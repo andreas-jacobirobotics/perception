@@ -77,7 +77,7 @@ if __name__ == "__main__":
             print("Final Result for sensor %s" % (sensor_frame))
             print("Rotation: ")
             print(T_camera_world.rotation)
-            print("Quaternion: ")
+            print("Quaternion (wxyz): ")
             print(T_camera_world.quaternion)
             print("Translation: ")
             print(T_camera_world.translation)
